@@ -17,7 +17,7 @@ plt.show()
 ![image](https://github.com/kohjun/Image-processing-with-photo-to-cartoon/assets/82298792/966098c6-308a-4f30-8389-64bc531f3b3c)
 
 
-## 자신의 알고리즘으로 만화같은 느낌이 잘 표현되는 이미지 만들기
+## 1. 자신의 알고리즘으로 만화같은 느낌이 잘 표현되는 이미지 만들기
 import cv2
 import base64
 from IPython.display import HTML
@@ -49,7 +49,7 @@ HTML(html_image)
 ![image](https://github.com/kohjun/Image-processing-with-photo-to-cartoon/assets/82298792/5ab2fa30-586b-4ca8-820e-a32e1e97d4a9)
 
 
-## 자신의 알고리즘으로 만화 같은 느낌이 잘 표현되지 않는 이미지 만들기
+## 2. 자신의 알고리즘으로 만화 같은 느낌이 잘 표현되지 않는 이미지 만들기
 import cv2
 import matplotlib.pyplot as plt
 
@@ -76,7 +76,7 @@ plt.axis('off')
 plt.show()
 ![image](https://github.com/kohjun/Image-processing-with-photo-to-cartoon/assets/82298792/639c7813-36ef-40f6-b81a-656e504326da)
 
-## 자신의 알고리즘의 한계에 대해 작성
+## 3. 자신의 알고리즘의 한계에 대해 작성
 주피터 노트북에서는 GUI 백엔드를 지원하지 않으므로 matplot을 이용해 표현할 수 밖에 없는 한계가 있었고, 만화스타일을 표현하는 과정에서도
 내가 생각하는 스타일을 표현하는 과정에서 어떤 기법을 사용해야 나오는지 찾는 과정도 어려웠다. 또한 선명도나 명암 대비 같은 부분이나 음영이나 색조를 표현하는 것도
 코드로 표현하기에는 어떤 수치가 어울리는지 찾는 과정에 많은 시간이 걸렸다.
