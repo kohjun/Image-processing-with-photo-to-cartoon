@@ -1,0 +1,56 @@
+# 만화 같은 느낌이 잘 표현되는 이미지
+import cv2
+import base64
+from IPython.display import HTML
+
+# 이미지를 불러옵니다.
+image = cv2.imread('cat2.jpeg')
+
+# 에지 검출을 위해 이미지를 그레이스케일로 변환합니다.
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# 에지 검출을 위해 가우시안 블러를 적용합니다.
+blurred_image = cv2.medianBlur(gray_image, 5)
+
+# 에지를 검출합니다.
+edges = cv2.adaptiveThreshold(blurred_image, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 9)
+
+# 컬러 이미지를 블러처리 합니다.
+color = cv2.bilateralFilter(image, 9, 300, 300)
+
+# 에지를 컬러 이미지에 합성합니다.
+cartoon = cv2.bitwise_and(color, color, mask=edges)
+
+# 이미지를 HTML로 변환합니다.
+_, encoded_image = cv2.imencode('.png', cartoon)
+html_image = "<img src='data:image/png;base64," + base64.b64encode(encoded_image).decode() + "'/>"
+
+# HTML을 표시합니다.
+HTML(html_image)
+
+
+# 만화 같은 느낌이 잘 표현되지 않는 이미지
+import cv2
+import matplotlib.pyplot as plt
+
+# 이미지를 불러옵니다.
+img = cv2.imread('cat2.jpeg', cv2.IMREAD_GRAYSCALE)
+
+# 초기값 설정
+threshold = 127
+adaptive_type = cv2.ADAPTIVE_THRESH_MEAN_C
+adaptive_blocksize = 99
+adaptive_C = 4
+
+# 가우시안 블러를 적용합니다.
+blurred_img = cv2.GaussianBlur(img, (5, 5), 0)
+
+# 이진화 기법 적용
+_, binary_user = cv2.threshold(blurred_img, threshold, 255, cv2.THRESH_BINARY_INV)
+
+# 이미지 및 이진화 결과 표시
+plt.figure(figsize=(8, 6))
+plt.imshow(binary_user, cmap='gray')
+plt.title('Simple Thresholding with Gaussian Blur')
+plt.axis('off')
+plt.show()
